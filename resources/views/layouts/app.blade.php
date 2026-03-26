@@ -11,6 +11,9 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- PWA -->
+        <link rel="manifest" href="/manifest.json">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -33,4 +36,14 @@
             </main>
         </div>
     </body>
+
+    {{-- PWA --}}
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js')
+            .then(() => console.log('Service Worker Registered'))
+            .catch(err => console.log('Service Worker Failed', err));
+    }
+    </script>
+
 </html>
